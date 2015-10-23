@@ -17,6 +17,9 @@ cache:
     - common-lib/target/resolution-cache
     - common-lib/target/scala-2.11
     - common-lib/target/streams
+    - cropper/target/resolution-cache
+    - cropper/target/scala-2.11
+    - cropper/target/streams
     - kahuna/node_modules
     - kahuna/public/jspm_packages
     - kahuna/target/resolution-cache
@@ -35,6 +38,7 @@ cache:
 
 env:
   # TODO: also dist.sh
+  - PROJECT=cropper
   - PROJECT=kahuna
   - PROJECT=media-api
   # TODO: other projects too!
