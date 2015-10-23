@@ -1,0 +1,22 @@
+language: scala
+scala:
+  - 2.10.4
+jdk:
+  - openjdk8
+cache:
+  directories:
+    # TODO: needed?
+    # - $HOME/.ivy2
+    - $HOME/.sbt
+    - kahuna/node_modules
+    - kahuna/public/jspm_packages
+    - kahuna/target/resolution-cache
+    - kahuna/target/streams
+    - media-api/target/resolution-cache
+    - media-api/target/streams
+    - project/target/resolution-cache
+    - project/target/streams
+env:
+  - PROJECT=kahuna
+  - PROJECT=media-api
+script: sbt "project $PROJECT" test
