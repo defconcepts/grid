@@ -2,7 +2,9 @@ language: scala
 scala:
   - 2.10.4
 jdk:
-  - openjdk8
+  - oraclejdk8
+  # FIXME: why can't we use openjdk 8?
+  # - openjdk8
 cache:
   directories:
     # TODO: needed?
