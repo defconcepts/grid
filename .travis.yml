@@ -7,8 +7,7 @@ jdk:
   # - openjdk8
 cache:
   directories:
-    # TODO: needed?
-    # - $HOME/.ivy2
+    - $HOME/.ivy2
     - $HOME/.sbt
     - kahuna/node_modules
     - kahuna/public/jspm_packages
