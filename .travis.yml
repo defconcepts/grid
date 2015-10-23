@@ -21,4 +21,4 @@ cache:
 env:
   - PROJECT=kahuna
   - PROJECT=media-api
-script: sbt "project $PROJECT" test
+script: sbt "project $PROJECT" test dist
