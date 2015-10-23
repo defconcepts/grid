@@ -1,23 +1,46 @@
 language: scala
 scala:
   - 2.11.6
+
 jdk:
   - oraclejdk8
   # FIXME: why can't we use openjdk 8?
   # - openjdk8
+
+# Use container-based infrastructure
+sudo: false
+
 cache:
   directories:
-    - $HOME/.ivy2
-    - $HOME/.sbt
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+    - common-lib/target/resolution-cache
+    - common-lib/target/scala-2.11
+    - common-lib/target/streams
     - kahuna/node_modules
     - kahuna/public/jspm_packages
     - kahuna/target/resolution-cache
+    - kahuna/target/scala-2.11
     - kahuna/target/streams
     - media-api/target/resolution-cache
+    - media-api/target/scala-2.11
     - media-api/target/streams
+    # TODO: other projects too!
+    - project/project/target
     - project/target/resolution-cache
+    # uh?
+    - project/target/scala-2.10
+    - project/target/scala-2.11
     - project/target/streams
+
 env:
+  # TODO: also dist.sh
   - PROJECT=kahuna
   - PROJECT=media-api
-script: sbt "project $PROJECT" test dist
+  # TODO: other projects too!
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M "project $PROJECT" test dist
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
