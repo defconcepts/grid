@@ -20,6 +20,9 @@ cache:
     - cropper/target/resolution-cache
     - cropper/target/scala-2.11
     - cropper/target/streams
+    - image-loader/target/resolution-cache
+    - image-loader/target/scala-2.11
+    - image-loader/target/streams
     - kahuna/node_modules
     - kahuna/public/jspm_packages
     - kahuna/target/resolution-cache
@@ -28,6 +31,15 @@ cache:
     - media-api/target/resolution-cache
     - media-api/target/scala-2.11
     - media-api/target/streams
+    - metadata-editor/target/resolution-cache
+    - metadata-editor/target/scala-2.11
+    - metadata-editor/target/streams
+    - thrall/target/resolution-cache
+    - thrall/target/scala-2.11
+    - thrall/target/streams
+    - usage/target/resolution-cache
+    - usage/target/scala-2.11
+    - usage/target/streams
     # TODO: other projects too!
     - project/project/target
     - project/target/resolution-cache
@@ -39,9 +51,13 @@ cache:
 env:
   # TODO: also dist.sh
   - PROJECT=cropper
+  - PROJECT=image-loader
   - PROJECT=kahuna
   - PROJECT=media-api
-  # TODO: other projects too!
+  - PROJECT=metadata-editor
+  - PROJECT=thrall
+  - PROJECT=usage
+  # TODO: other projects: common-lib? elasticsearch, ftp-watcher, imgops
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M "project $PROJECT" test dist
